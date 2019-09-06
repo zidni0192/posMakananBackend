@@ -7,18 +7,19 @@ module.exports = (req, res) => {
             pass: 'abogobogaA#'
         }
     });
+    console.log(req.body)
     const mailOptions = {
         from: 'sendmailposmakanan96@gmail.com', // sender address
         to: req.body.email, // list of receivers
         subject: 'Transaksimu', // Subject line
-        html: req.body.html// plain text body
+        html: '<p>Transakasi Berhasil</p>'// plain text body
     };
     transporter.sendMail(mailOptions, function (err, info) {
         if (err){
             console.log(err)
         }
         else{
-            console.log(info);
+            res.json('Sukses')
         }
     });
 }
